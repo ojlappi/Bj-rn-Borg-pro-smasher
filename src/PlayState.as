@@ -10,7 +10,7 @@ package
 	
 		public var room:Level;
 		public var rooms:Array;
-		private var nextBall:int;
+		
 		public function PlayState() 
 		{
 		}
@@ -30,9 +30,10 @@ package
 			add(Registry.player);
 			add(Registry.projectiles)
 			add(Registry.npcs);
-			add(Registry.collidableEnemies);
+			add(Registry.smokeLayer);
 			add(Registry.enemies);
-			add(Registry.selfcollidingGroup);
+			
+			
 		
 			add(new Ufo(0, 0, this));
 			
@@ -65,10 +66,7 @@ package
 			FlxG.collide(Registry.projectiles, room);
 			FlxG.collide(Registry.npcs, room);
 			FlxG.collide(Registry.enemies, room);
-			FlxG.collide(Registry.collidableEnemies, Registry.player);
-			FlxG.collide(Registry.collidableEnemies, room);
-			FlxG.collide(Registry.selfcollidingGroup,room);
-			FlxG.collide(Registry.selfcollidingGroup,Registry.selfcollidingGroup);
+		
 			
 			
 			
@@ -110,7 +108,7 @@ package
 			}
 			if (FlxG.keys.SIX&&FlxG.keys.justPressed("SIX")) {
 				
-				Registry.enemies.add(new EyeBall(Registry.player.x, 40));
+				Registry.smokeLayer.add(new SmokeMachine(Registry.player.x, Registry.player.y ));
 				
 			
 			}
