@@ -30,8 +30,6 @@ package sprite.state {
 			spr.play("swing");
 			counter--;
 			if (counter < 1) {
-				
-				
 				spr.state = new IdleState(spr);
 			}
 			var sign:int = (spr.facing==FlxObject.LEFT?-1:1);

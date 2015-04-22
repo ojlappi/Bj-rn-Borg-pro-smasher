@@ -18,8 +18,10 @@ package sprite
 		override public function update():void {
 			count++;
 			if(count==10){
-			for (var i:int = 0; i < 10; i++){
-			var part:SmokePart = new SmokePart(x + i * 3, y);
+			for (var i:int = 0; i < 11; i++){
+			var part:SmokePart = new SmokePart(x + 2 * i , y + 4);
+			/*for (var i:int = 0; i < 16; i++){
+			var part:SmokePart = new SmokePart(x + 1.35*i , y+4);*/
 			
 			part.velocity.y = -10;
 			

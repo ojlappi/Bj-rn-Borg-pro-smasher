@@ -27,10 +27,12 @@ package
 			Registry.player = new Player(40, room.height - 40);
 			
 			//make spritegroups appear
+			add(Registry.smokeLayer);
+			add(Registry.backgroundLayer);
 			add(Registry.player);
 			add(Registry.projectiles)
 			add(Registry.npcs);
-			add(Registry.smokeLayer);
+			
 			add(Registry.enemies);
 			
 			
@@ -82,7 +84,7 @@ package
 			
 			if (FlxG.keys.justPressed("TWO")) {
 				var boss:BossBall = new BossBall(Registry.player.x, 40);
-				Registry.collidableEnemies.add(boss)
+				Registry.enemies.add(boss)
 				
 			
 			}
@@ -96,7 +98,7 @@ package
 		
 			if (FlxG.keys.FOUR&&FlxG.keys.justPressed("FOUR")) {
 				
-				Registry.collidableEnemies.add(new TennisMachine(Registry.player.x, 40));
+				Registry.enemies.add(new TennisMachine(Registry.player.x, 40));
 				
 			
 			}
@@ -108,18 +110,13 @@ package
 			}
 			if (FlxG.keys.SIX&&FlxG.keys.justPressed("SIX")) {
 				
-				Registry.smokeLayer.add(new SmokeMachine(Registry.player.x, Registry.player.y ));
+				Registry.backgroundLayer.add(new SmokeMachine(Registry.player.x, Registry.player.y-60 ));
 				
 			
 			}
 			
 			
-			if (FlxG.keys.SIX&&FlxG.keys.justPressed("SIX")) {
-				
-				Registry.enemies.add(new EyeBall(Registry.player.x, 40));
-				
 			
-			}
 			if (FlxG.keys.justPressed("Z")) {
 			Registry.player.state.tryToSwing();
 			

@@ -12,22 +12,23 @@ package sprite
 		public function SmokePart(X:Number, Y:Number)
 		{
 		super(X, Y);
-		loadGraphic(smokePNG, true, true, 10, 10, false);
-	
-		addAnimation("idle", [1], 0, false);
-		addAnimation("second", [0], 0, false);
+		
+	loadGraphic(smokePNG, true, true, 10, 10, false);
 		
 		
 		}
 		override public function update():void {
-			if (y < 0)
+			if (y < -9||velocity.y>-5)
 			kill();
-			
 			count++;
 			if (count == 19) {
-				x += (Math.random() * 20 - 10)/7;
-			randomFrame();
-			count = 0;
+				
+				var rand:Number = (Math.random() * 16-3 ) / 20;
+				velocity.y -= rand;
+				x += (Math.random() * 20 - 10) / 17;
+				
+				randomFrame();
+				count = 0;
 			}
 		}
 		

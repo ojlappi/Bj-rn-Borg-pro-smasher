@@ -29,6 +29,7 @@ package sprite.state {
 			
 			if(spr.velocity.y>0)
 				spr.play("fall");
+			else spr.play("jump");
 		}
 		public function tryToSwing():void {
 				spr.state = new ChargeState(spr);
