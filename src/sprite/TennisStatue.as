@@ -33,7 +33,7 @@ package sprite
 				if (FlxG.overlap(this,pro)) {
 					swinging = true;
 					play("swing");
-					pro.velocity.x = sign * 100;
+					pro.velocity.x = sign * 150;
 					break;
 				}
 				

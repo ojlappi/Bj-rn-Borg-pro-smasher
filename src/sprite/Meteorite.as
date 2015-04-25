@@ -25,7 +25,7 @@ package sprite
 			//loadGraphic(ballPNG, false, true, 30, 21,false);
 			elasticity = 0.8;
 			//addAnimation("fade", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 3 , true);	
-			addAnimation("fade", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24,25,26,27,27,27,27,28,28,29],20 ,false);	
+			addAnimation("fade", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],20 ,false);	
 			velocity.x = velocityX;
 			velocity.y = velocityY;
 			angle
@@ -33,7 +33,7 @@ package sprite
 		}
 			override public function update():void {
 				if (isEffect) {
-					if (_curFrame == 13)
+					if (_curFrame == 29)
 					kill();
 				counter++;
 				play("fade");
@@ -41,13 +41,12 @@ package sprite
 				velocity.y -= rand;
 				velocity.x += (Math.random() * 20 - 10) / 3;
 				if(rand>0){
-				angle -= father.angle/counter;
-				father.angle += angle/counter;
+				angle -= 30;
+				father.angle += 30;;
 				}
 				}else {
 					if (y < -8)
 					kill();
-					
 				var fadeFX:Meteorite = new Meteorite(x, y, 0, 0, true);
 				Registry.effects.add(fadeFX);
 				fadeFX.angle = Math.atan(velocity.y / velocity.x) * 360 / (2 * Math.PI);

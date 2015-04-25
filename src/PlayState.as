@@ -121,6 +121,12 @@ package
 				
 			
 			}
+				if (FlxG.keys.EIGHT&&FlxG.keys.justPressed("EIGHT")) {
+				
+				Registry.projectiles.add(new Meteorite(Registry.player.x, Registry.player.y,170,0,false ));
+				
+			
+			}
 			
 			
 			
