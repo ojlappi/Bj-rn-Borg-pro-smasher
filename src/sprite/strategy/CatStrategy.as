@@ -11,12 +11,9 @@ package sprite.strategy {
 		public function CatStrategy(spr:GameSprite) 
 		{
 			this.spr = spr;
-			coolDown = 70;
-			
+			coolDown = 70;	
 		}
-		
 		/* INTERFACE sprite.Strategy */
-		
 		public function behave():void 
 		{
 			coolDown--;
@@ -26,13 +23,10 @@ package sprite.strategy {
 				if (Math.abs(spr.velocity.x) < 20)
 				spr.acceleration.x = 0;
 			else
-			spr.velocity.y = -100;
-			
+			spr.velocity.y = -100;	
 			}
 			coolDown = Math.floor(Math.random() * 150)+50;
 			}
 		}
-		
 	}
-
 }

@@ -25,7 +25,7 @@ package sprite
 				
 				var rand:Number = (Math.random() * 16-3 ) / 20;
 				velocity.y -= rand;
-				x += (Math.random() * 20 - 10) / 17;
+				x += (Math.random() * 20 - 10) / 14;
 				
 				randomFrame();
 				count = 0;

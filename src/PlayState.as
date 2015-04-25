@@ -29,11 +29,12 @@ package
 			//make spritegroups appear
 			add(Registry.smokeLayer);
 			add(Registry.backgroundLayer);
-			add(Registry.player);
+			add(Registry.effects);
 			add(Registry.projectiles)
 			add(Registry.npcs);
-			
 			add(Registry.enemies);
+			add(Registry.player);
+			
 			
 			
 		
@@ -111,6 +112,12 @@ package
 			if (FlxG.keys.SIX&&FlxG.keys.justPressed("SIX")) {
 				
 				Registry.backgroundLayer.add(new SmokeMachine(Registry.player.x, Registry.player.y-60 ));
+				
+			
+			}
+			if (FlxG.keys.SEVEN&&FlxG.keys.justPressed("SEVEN")) {
+				
+				Registry.projectiles.add(new Meteorite(Registry.player.x, 1,50,100,false ));
 				
 			
 			}

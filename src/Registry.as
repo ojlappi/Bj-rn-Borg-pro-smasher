@@ -17,6 +17,7 @@ package
 		public static var selfcollidingGroup:FlxGroup = new FlxGroup;
 		public static var smokeLayer:FlxGroup = new FlxGroup;
 		public static var backgroundLayer:FlxGroup = new FlxGroup;
+		public static var effects:FlxGroup = new FlxGroup;
 		public function Registry() 
 		{
 			

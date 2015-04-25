@@ -18,8 +18,7 @@ package sprite {
 				velocity.x = velocity.x +velocity.x*1.5*spin;
 				spin = 0;
 			}
-			if (Math.abs(velocity.x) < 10 && Math.abs(velocity.y) < 10&&touching==FlxObject.FLOOR)
-			kill();
+			
 		}
 		
 	}

@@ -30,7 +30,7 @@ package sprite.state {
 			counter--;
 			
 			if (counter < 1) {
-				spr.flicker( 0);
+				spr.flicker(1);
 		
 			spr.state = new IdleState(spr);
 			
