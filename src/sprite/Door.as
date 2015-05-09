@@ -7,8 +7,9 @@ package sprite {
 	public class Door extends FlxSprite
 	{
 		private var id:int;
-		public function Door() 
-		{
+		public function Door(X:Number, Y:Number ){
+		super(X, Y);
+		immovable = true;
 			
 		}
 		

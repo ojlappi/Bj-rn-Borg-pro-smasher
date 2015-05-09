@@ -8,7 +8,7 @@ package
 	{
 		
 	
-		public var room:Level;
+
 		public var rooms:Array;
 		
 		public function PlayState() 
@@ -20,11 +20,11 @@ package
 			FlxG.bgColor = 0xff144954;	
 			
 			
-			rooms = [new TestLevel,new DesertLevel, new UFOLevel,new TenniscourtsLevel];
-			room = rooms[0];
-			add(room);
+			rooms = [new TestLevel,new DesertLevel, new UFOLevel,new TenniscourtsLevel,new TowerRoom];
+			Registry.room = rooms[0];
+		
 			
-			Registry.player = new Player(40, room.height - 40);
+			Registry.player = new Player(40, Registry.room.height - 40);
 			
 			//make spritegroups appear
 			add(Registry.smokeLayer);
@@ -34,6 +34,7 @@ package
 			add(Registry.npcs);
 			add(Registry.enemies);
 			add(Registry.player);
+				add(Registry.room);
 			
 			
 			
@@ -50,9 +51,9 @@ package
 			//END TEST STUFF
 			
 			
-			FlxG.camera.setBounds(0, 0,room.width, room.height);
+			FlxG.camera.setBounds(0, 0,Registry.room.width, Registry.room.height);
 			FlxG.camera.follow(Registry.player, FlxCamera.STYLE_PLATFORMER);
-			FlxG.worldBounds.make(room.width, room.height);
+			FlxG.worldBounds.make(Registry.room.width, Registry.room.height);
 			
 			FlxG.watch(	Registry.player.acceleration, "x", "ax");
 			FlxG.watch(	Registry.player.velocity, "x", "vx");
@@ -64,11 +65,11 @@ package
 		{
 			super.update();
 			
-			FlxG.collide(Registry.player, room);
+			FlxG.collide(Registry.player, Registry.room);
 		
-			FlxG.collide(Registry.projectiles, room);
-			FlxG.collide(Registry.npcs, room);
-			FlxG.collide(Registry.enemies, room);
+			FlxG.collide(Registry.projectiles, Registry.room);
+			FlxG.collide(Registry.npcs, Registry.room);
+			FlxG.collide(Registry.enemies, Registry.room);
 		
 			
 			
@@ -79,6 +80,13 @@ package
 			
 					
 			//DEBUG STUFf
+			if (FlxG.keys.justPressed("B")) {
+				var miss:Missile = new Missile(Registry.player.x, 0,new FlxPoint(50,400));
+				
+				Registry.backgroundLayer.add(miss)
+				
+			
+			}
 			if (FlxG.keys.ONE){
 				Registry.npcs.add(new Cat(Math.floor(Math.random() * 80)+Registry.player.x,40));
 			}
@@ -123,7 +131,19 @@ package
 			}
 				if (FlxG.keys.EIGHT&&FlxG.keys.justPressed("EIGHT")) {
 				
-				Registry.projectiles.add(new Meteorite(Registry.player.x, Registry.player.y,170,0,false ));
+				loadRoom(4,0);
+				
+			
+			}
+				if (FlxG.keys.Q&&FlxG.keys.justPressed("Q")) {
+				
+				loadRoom(0,0);
+				
+			
+			}
+			if (FlxG.keys.NINE&&FlxG.keys.justPressed("NINE")) {
+				
+				Registry.projectiles.add(new HomingMeteorite(Registry.player.x, 1,50,100,false ));
 				
 			
 			}
@@ -143,18 +163,27 @@ package
 		
 		}
 		public function loadRoom(roomIndex:int, entryIndex:int):void {
-			var oldRoom:FlxGroup = room;
-			room = rooms[roomIndex];
+			var oldRoom:FlxGroup = Registry.room;
+			Registry.room = rooms[roomIndex];
+		Registry.backgroundLayer.clear();
+			Registry.collidableEnemies.clear();
+			Registry.effects.clear();
+			Registry.enemies.clear();
+			Registry.npcs.clear();
+			Registry.projectiles.clear();
+			Registry.smokeLayer.clear();
+			
 			remove(oldRoom);
 			
-			add(room);
+			add(Registry.room);
+			Registry.room.init();
 			
 			
-			Registry.player.x = 10;
-			Registry.player.y = 10;
-			FlxG.camera.setBounds(0, 0,room.width, room.height);
+			Registry.player.x = 40;
+			Registry.player.y = Registry.room.height-40;
+			FlxG.camera.setBounds(0, 0,Registry.room.width, Registry.room.height);
 			FlxG.camera.follow(Registry.player, FlxCamera.STYLE_PLATFORMER);
-			FlxG.worldBounds.make(room.width, room.height);
+			FlxG.worldBounds.make(Registry.room.width, Registry.room.height);
 
 		}
 	}

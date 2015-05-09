@@ -9,6 +9,7 @@ package
 	 */
 	public class Registry 
 	{
+		public static var room:Level;
 		public static var player:Player;
 		public static var projectiles:FlxGroup = new FlxGroup;
 		public static var npcs:FlxGroup = new FlxGroup;

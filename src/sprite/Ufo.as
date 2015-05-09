@@ -10,7 +10,7 @@ package sprite
 		
 		public function Ufo(X:Number,Y:Number,playstate:PlayState)
 		{
-			roomIndex = 1;
+			roomIndex = 2;
 			entryIndex = 0;
 			//transportation code
 			super(X, Y,playstate);

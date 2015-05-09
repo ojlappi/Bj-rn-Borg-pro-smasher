@@ -15,6 +15,9 @@ package
 		public function Level() 	{
 			
 		}
+		public function init():void {
+			
+		}
 		
 	}
 

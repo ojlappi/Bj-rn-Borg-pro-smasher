@@ -56,7 +56,8 @@ private var count:int = 0;
 			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES, 1, true, false);
 			FlxControl.player1.setCursorControl(false, false, true, true);
 			
-
+			FlxControl.player1.setJumpButton("UP", FlxControlHandler.KEYMODE_PRESSED, 
+			200, FlxObject.FLOOR, 0, 0, null, "");
 			FlxControl.player1.setMovementSpeed(400, 0, 100, 200, 400, 0);
 			FlxControl.player1.setGravity(0, 400);
 			
@@ -73,17 +74,7 @@ private var count:int = 0;
 			state.animate();
 			
 			
-			if (FlxG.keys.UP){
 			
-				if(touching==FlxObject.FLOOR){
-					velocity.y = -200;
-					play("jump");
-				}
-				else if(FlxG.keys.justPressed("UP")){
-					velocity.y = -100;
-					play("flap", true);
-				}
-			}
 			
 		}
 		
