@@ -10,13 +10,13 @@ package
 		
 		public var width:int;
 		public var height:int;
-		public var entryX:Array;
-		public var entryY:Array;
+		public var entries:Array;
 		public function Level() 	{
 			
 		}
-		public function init():void {
-			
+		public function init(entryIndex:int):void {
+			//Registry.player.x = entries[entryIndex].x;
+			//Registry.player.y = entries[entryIndex].y;
 		}
 		
 	}

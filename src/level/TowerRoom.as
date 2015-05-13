@@ -15,21 +15,17 @@ package level
 		public function TowerRoom() 
 		{
 			
-			
+			add(new BigDoor(700, 340));
+			add(new Tower(20, 151));
+			add(new FloatingBall(19, 80));
+			var floor:FlxTileblock = new FlxTileblock(1, 400, 800,1);
+			add(floor);
 			width = 800;
 		height = 400;
 			
 			
 		}
-		override public function init():void {
-			Registry.backgroundLayer.add(new BigDoor(700, 340));
-			Registry.backgroundLayer.add(new Tower(20, 151));
-			Registry.backgroundLayer.add(new FloatingBall(19, 80));
-			var floor:FlxTileblock = new FlxTileblock(1, 400, 800,1);
-			//floor.makeGraphic(320, 32, 0xff689c16);
-			//add(Registry.player);
-			add(floor);
-		}
+	
 		
 	}
 

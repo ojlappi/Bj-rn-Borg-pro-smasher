@@ -21,7 +21,6 @@ package level
 		
 			map = new FlxTilemap();
 			map.loadMap(new mapCSV, mapPNG, 20, 20, 0, 0, 1, 1);
-			
 			width = map.width;
 			height = map.height;
 			add(map);

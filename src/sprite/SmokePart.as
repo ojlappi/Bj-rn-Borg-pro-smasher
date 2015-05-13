@@ -13,7 +13,7 @@ package sprite
 		{
 		super(X, Y);
 		
-	loadGraphic(smokePNG, true, true, 10, 10, false);
+		loadGraphic(smokePNG, true, true, 10, 10, false);
 		
 		
 		}
@@ -31,7 +31,6 @@ package sprite
 				count = 0;
 			}
 		}
-		
 	}
 
 }

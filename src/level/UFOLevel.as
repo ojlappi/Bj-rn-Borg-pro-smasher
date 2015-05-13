@@ -18,9 +18,9 @@ package level
 		
 		public function UFOLevel() {
 			super();
-			entryX = [40,10];
 			
-			entryY = [40,10];
+			
+			
 			map = new FlxTilemap();
 			map.loadMap(new mapCSV, mapPNG, 20, 20, 0, 0, 1, 1);
 			

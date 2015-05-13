@@ -19,8 +19,7 @@ package level {
 		
 		public function DesertLevel() {
 			super();
-			entryX = [0,0];
-			entryY = [0,0];
+			
 			map = new FlxTilemap();
 			map.loadMap(new mapCSV, mapPNG, 20, 20, 0, 0, 1, 1);
 			

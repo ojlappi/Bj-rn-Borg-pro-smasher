@@ -6,20 +6,13 @@ package
 
 	public class PlayState extends FlxState
 	{
-		
-	
-
 		public var rooms:Array;
-		
-		public function PlayState() 
-		{
+		public function PlayState(){
 		}
-		
-		override public function create():void
-		{
+		override public function create():void{
 			FlxG.bgColor = 0xff144954;	
 			
-			
+			Registry.playstate = this;
 			rooms = [new TestLevel,new DesertLevel, new UFOLevel,new TenniscourtsLevel,new TowerRoom];
 			Registry.room = rooms[0];
 		
@@ -34,11 +27,9 @@ package
 			add(Registry.npcs);
 			add(Registry.enemies);
 			add(Registry.player);
-				add(Registry.room);
+			add(Registry.room);
 			
 			
-			
-		
 			add(new Ufo(0, 0, this));
 			
 			
@@ -61,8 +52,7 @@ package
 			
 		}
 		
-		override public function update():void
-		{
+		override public function update():void{
 			super.update();
 			
 			FlxG.collide(Registry.player, Registry.room);
@@ -93,63 +83,36 @@ package
 			
 			if (FlxG.keys.justPressed("TWO")) {
 				var boss:BossBall = new BossBall(Registry.player.x, 40);
-				Registry.enemies.add(boss)
-				
-			
+				Registry.enemies.add(boss);
 			}
 			if (FlxG.keys.justPressed("THREE")) {
 				var statue:TennisStatue = new TennisStatue(Registry.player.x, Registry.player.y-10,Registry.player.facing);
-				
-				Registry.npcs.add(statue)
-				
-			
+				Registry.npcs.add(statue);
 			}
-		
 			if (FlxG.keys.FOUR&&FlxG.keys.justPressed("FOUR")) {
-				
 				Registry.enemies.add(new TennisMachine(Registry.player.x, 40));
-				
-			
 			}
 			if (FlxG.keys.FIVE&&FlxG.keys.justPressed("FIVE")) {
-				
 				Registry.enemies.add(new Dude(Registry.player.x, 40));
-				
-			
 			}
 			if (FlxG.keys.SIX&&FlxG.keys.justPressed("SIX")) {
-				
 				Registry.backgroundLayer.add(new SmokeMachine(Registry.player.x, Registry.player.y-60 ));
-				
-			
 			}
 			if (FlxG.keys.SEVEN&&FlxG.keys.justPressed("SEVEN")) {
-				
 				Registry.projectiles.add(new Meteorite(Registry.player.x, 1,50,100,false ));
-				
-			
 			}
-				if (FlxG.keys.EIGHT&&FlxG.keys.justPressed("EIGHT")) {
-				
+				if (FlxG.keys.G&&FlxG.keys.justPressed("G")) {
+				Registry.projectiles.add(new Closet(Registry.player.x, 40));
+			}
+				if (FlxG.keys.EIGHT&&FlxG.keys.justPressed("EIGHT")){
 				loadRoom(4,0);
-				
-			
 			}
-				if (FlxG.keys.Q&&FlxG.keys.justPressed("Q")) {
-				
+				if (FlxG.keys.Q&&FlxG.keys.justPressed("Q")){
 				loadRoom(0,0);
-				
-			
 			}
-			if (FlxG.keys.NINE&&FlxG.keys.justPressed("NINE")) {
-				
+			if (FlxG.keys.NINE&&FlxG.keys.justPressed("NINE")){
 				Registry.projectiles.add(new HomingMeteorite(Registry.player.x, 1,50,100,false ));
-				
-			
-			}
-			
-			
-			
+			}	
 			if (FlxG.keys.justPressed("Z")) {
 			Registry.player.state.tryToSwing();
 			
@@ -165,7 +128,7 @@ package
 		public function loadRoom(roomIndex:int, entryIndex:int):void {
 			var oldRoom:FlxGroup = Registry.room;
 			Registry.room = rooms[roomIndex];
-		Registry.backgroundLayer.clear();
+			Registry.backgroundLayer.clear();
 			Registry.collidableEnemies.clear();
 			Registry.effects.clear();
 			Registry.enemies.clear();
@@ -176,7 +139,7 @@ package
 			remove(oldRoom);
 			
 			add(Registry.room);
-			Registry.room.init();
+			Registry.room.init(entryIndex);
 			
 			
 			Registry.player.x = 40;

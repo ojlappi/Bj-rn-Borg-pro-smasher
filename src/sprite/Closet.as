@@ -9,9 +9,7 @@ package sprite {
 		private var occupied:Boolean;
 			[Embed(source = "../sprite/assets/wardrobe.png")] private var wardrobePNG:Class;
 			
-		public function Closet(X:Number,Y:Number) 
-		{		
-			
+		public function Closet(X:Number,Y:Number){
 			super(X, Y);
 			width = 30;
 			height = 30;
@@ -24,7 +22,7 @@ package sprite {
 
 			
 		}
-		override public function update():void {
+		override public function update():void{
 			state.animate();
 			
 			
