@@ -13,6 +13,7 @@ package
 			FlxG.bgColor = 0xff144954;	
 			
 			Registry.playstate = this;
+			Registry.justEntered = false;
 			rooms = [new TestLevel,new DesertLevel, new UFOLevel,new TenniscourtsLevel,new TowerRoom];
 			Registry.room = rooms[0];
 			
@@ -67,9 +68,11 @@ package
 			
 			
 			
-				if (FlxG.overlap(Registry.enemies, Registry.player)) 
-					Registry.player.state.hurt();
+			if (FlxG.overlap(Registry.enemies, Registry.player)) 
+				Registry.player.state.hurt();
 					
+			if (FlxG.keys.justReleased("DOWN"))
+			Registry.justEntered = false;
 			
 					
 			//DEBUG STUFf
@@ -128,7 +131,7 @@ package
 			
 		
 		}
-		public function loadRoom(roomIndex:int, entryIndex:int):void {
+		public function loadRoom(roomIndex:int, entryIndex:int):void{
 			var oldRoom:FlxGroup = Registry.room;
 			Registry.room = rooms[roomIndex];
 			Registry.backgroundLayer.clear();

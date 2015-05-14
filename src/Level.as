@@ -23,8 +23,10 @@ package
 		}
 		public function setplayer(entryIndex:int):void {
 			
+			Registry.justEntered = true;
 			Registry.player.x = entries.members[entryIndex].x;
 			Registry.player.y = entries.members[entryIndex].y;
+			
 		
 		}	
 	}

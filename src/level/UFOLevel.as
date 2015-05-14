@@ -1,6 +1,7 @@
 package level 
 {
 	import org.flixel.*;
+	import sprite.SmallDoor;
 	/**
 	 * ...
 	 * @author Lappi
@@ -18,9 +19,9 @@ package level
 		
 		public function UFOLevel() {
 			super();
+			entries = new FlxGroup;
 			
-			
-			
+			entries.add(new SmallDoor(30, 30, 0, 0));
 			map = new FlxTilemap();
 			map.loadMap(new mapCSV, mapPNG, 20, 20, 0, 0, 1, 1);
 			

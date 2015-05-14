@@ -20,6 +20,7 @@ package
 		public static var backgroundLayer:FlxGroup = new FlxGroup;
 		public static var effects:FlxGroup = new FlxGroup;
 		public static var playstate:PlayState;
+		public static var justEntered:Boolean;
 		public function Registry() 
 		{
 			

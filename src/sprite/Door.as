@@ -9,11 +9,12 @@ package sprite {
 	{
 		protected var roomIndex:int;
 		protected var entryIndex:int;
+		protected var justEntered:Boolean=false;
 		//doorID,roomId är id på destinationen
 		protected  var playstate:PlayState;
 		
 		public function Door(X:Number, Y:Number, roomIndex:int, entryIndex:int) {
-			
+			justEntered = false;
 			playstate = Registry.playstate;
 			super(X, Y);
 			immovable = true;
@@ -22,9 +23,10 @@ package sprite {
 		}
 		
 		override public function update():void {
-			if (FlxG.keys.DOWN && overlaps(Registry.player)){
+			if (FlxG.keys.DOWN&& overlaps(Registry.player)&&!Registry.justEntered){
 				playstate.loadRoom(roomIndex, entryIndex);
 			}
+			
 		}
 	}
 
