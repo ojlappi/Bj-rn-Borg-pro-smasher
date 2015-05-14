@@ -29,10 +29,8 @@ private var count:int = 0;
 			facing = FlxObject.RIGHT;
 			width = 12;
 			height = 21;
-			
 			offset.x=9
 		
-			
 			
 			addAnimation("idle", [0], 0, false);
 			addAnimation("walk", [3,4,5,6,10,11,12,13],13, true);

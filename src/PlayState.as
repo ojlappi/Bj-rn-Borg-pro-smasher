@@ -15,6 +15,7 @@ package
 			Registry.playstate = this;
 			rooms = [new TestLevel,new DesertLevel, new UFOLevel,new TenniscourtsLevel,new TowerRoom];
 			Registry.room = rooms[0];
+			
 		
 			
 			Registry.player = new Player(40, Registry.room.height - 40);
@@ -49,6 +50,7 @@ package
 			FlxG.watch(	Registry.player.acceleration, "x", "ax");
 			FlxG.watch(	Registry.player.velocity, "x", "vx");
 			FlxG.watch(	Registry.player.velocity, "y", "vy");
+			Registry.room.init();
 			
 		}
 		
@@ -128,7 +130,7 @@ package
 		public function loadRoom(roomIndex:int, entryIndex:int):void {
 			var oldRoom:FlxGroup = Registry.room;
 			Registry.room = rooms[roomIndex];
-			Registry.backgroundLayer.clear();
+			//Registry.backgroundLayer.clear();
 			Registry.collidableEnemies.clear();
 			Registry.effects.clear();
 			Registry.enemies.clear();
@@ -136,14 +138,11 @@ package
 			Registry.projectiles.clear();
 			Registry.smokeLayer.clear();
 			
-			remove(oldRoom);
+		//	remove(oldRoom);
 			
 			add(Registry.room);
-			Registry.room.init(entryIndex);
-			
-			
-			Registry.player.x = 40;
-			Registry.player.y = Registry.room.height-40;
+			Registry.room.init();
+			Registry.room.setplayer(entryIndex);
 			FlxG.camera.setBounds(0, 0,Registry.room.width, Registry.room.height);
 			FlxG.camera.follow(Registry.player, FlxCamera.STYLE_PLATFORMER);
 			FlxG.worldBounds.make(Registry.room.width, Registry.room.height);

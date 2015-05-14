@@ -1,6 +1,7 @@
 package level 
 {
 		import org.flixel.*;
+		import sprite.SmallDoor;
 
 	/**
 	 * ...
@@ -18,7 +19,12 @@ package level
 		private var map:FlxTilemap;
 		public function TestLevel() 
 		{
+			entries = new FlxGroup;
+			entries.add(new SmallDoor(40, 220, 0, 1));
+			entries.add(new SmallDoor(100, 220, 0, 0));
+			entries.add(new SmallDoor(200, 220, 0, 2));
 		
+			
 			map = new FlxTilemap();
 			map.loadMap(new mapCSV, mapPNG, 20, 20, 0, 0, 1, 1);
 			width = map.width;

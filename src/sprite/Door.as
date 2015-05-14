@@ -11,10 +11,12 @@ package sprite {
 		private var entryIndex:int;
 		//doorID,roomId är id på destinationen
 		protected  var playstate:PlayState;
-		public function Door(X:Number, Y:Number,roomIndex:int,entryIndex:int) {
-		playstate = Registry.playstate;
-		super(X, Y);
-		immovable = true;
+		
+		public function Door(X:Number, Y:Number, roomIndex:int, entryIndex:int) {
+			
+			playstate = Registry.playstate;
+			super(X, Y);
+			immovable = true;
 		}
 		
 		override public function update():void {

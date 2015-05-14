@@ -1,6 +1,8 @@
 package  
 {
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxSprite;
+	import org.flixel.FlxPoint;
 	/**
 	 * ...
 	 * @author Lappi
@@ -10,15 +12,18 @@ package
 		
 		public var width:int;
 		public var height:int;
-		public var entries:Array;
-		public function Level() 	{
-			
+		public var entries:FlxGroup;
+		protected var bg:FlxGroup = new FlxGroup;
+		public function Level(){	
 		}
-		public function init(entryIndex:int):void {
-			//Registry.player.x = entries[entryIndex].x;
-			//Registry.player.y = entries[entryIndex].y;
+		public function init():void {
+			Registry.backgroundLayer.add(bg);
+			Registry.backgroundLayer.add(entries);
 		}
-		
+		public function setplayer(entryIndex:int):void {
+		var a:FlxPoint = (entries.members[entryIndex] as FlxSprite).getMidpoint();
+			Registry.player.x = a.x;
+			Registry.player.y = a.y;
+		}	
 	}
-
 }
