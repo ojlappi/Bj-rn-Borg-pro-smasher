@@ -17,7 +17,7 @@ package level
 		public function TowerRoom() 
 		{
 			
-			bg.add(new BigDoor(700, 340));
+			bg.add(new BigDoor(700, 340,0,0));
 			bg.add(new Tower(20, 151));
 			bg.add(new FloatingBall(19, 80));
 			var floor:FlxTileblock = new FlxTileblock(1, 400, 800,1);

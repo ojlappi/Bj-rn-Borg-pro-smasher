@@ -7,8 +7,8 @@ package sprite {
 	 */
 	public class Door extends FlxSprite
 	{
-		private var roomIndex:int;
-		private var entryIndex:int;
+		protected var roomIndex:int;
+		protected var entryIndex:int;
 		//doorID,roomId är id på destinationen
 		protected  var playstate:PlayState;
 		
@@ -17,6 +17,8 @@ package sprite {
 			playstate = Registry.playstate;
 			super(X, Y);
 			immovable = true;
+			this.roomIndex = roomIndex;
+			this.entryIndex = entryIndex;
 		}
 		
 		override public function update():void {

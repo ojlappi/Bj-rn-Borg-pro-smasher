@@ -3,6 +3,7 @@ package
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxSprite;
 	import org.flixel.FlxPoint;
+		import org.flixel.FlxG;
 	/**
 	 * ...
 	 * @author Lappi
@@ -21,9 +22,10 @@ package
 			Registry.backgroundLayer.add(entries);
 		}
 		public function setplayer(entryIndex:int):void {
-		var a:FlxPoint = (entries.members[entryIndex] as FlxSprite).getMidpoint();
-			Registry.player.x = a.x;
-			Registry.player.y = a.y;
+			
+			Registry.player.x = entries.members[entryIndex].x;
+			Registry.player.y = entries.members[entryIndex].y;
+		
 		}	
 	}
 }

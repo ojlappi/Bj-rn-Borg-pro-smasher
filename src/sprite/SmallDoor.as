@@ -11,7 +11,7 @@ package sprite
 		{
 			
 			super(X, Y, roomIndex, entryIndex);
-			loadGraphic(doorPNG, false, false, 15, 30, false);
+			loadGraphic(doorPNG, false, false, 15, 25, false);
 		}
 		
 	}

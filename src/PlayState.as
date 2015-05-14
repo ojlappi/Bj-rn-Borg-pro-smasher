@@ -50,6 +50,7 @@ package
 			FlxG.watch(	Registry.player.acceleration, "x", "ax");
 			FlxG.watch(	Registry.player.velocity, "x", "vx");
 			FlxG.watch(	Registry.player.velocity, "y", "vy");
+			FlxG.watch(	Registry.room, "entryIndex", "entry");
 			Registry.room.init();
 			
 		}
@@ -130,7 +131,7 @@ package
 		public function loadRoom(roomIndex:int, entryIndex:int):void {
 			var oldRoom:FlxGroup = Registry.room;
 			Registry.room = rooms[roomIndex];
-			//Registry.backgroundLayer.clear();
+			Registry.backgroundLayer.clear();
 			Registry.collidableEnemies.clear();
 			Registry.effects.clear();
 			Registry.enemies.clear();
@@ -138,7 +139,7 @@ package
 			Registry.projectiles.clear();
 			Registry.smokeLayer.clear();
 			
-		//	remove(oldRoom);
+			remove(oldRoom);
 			
 			add(Registry.room);
 			Registry.room.init();
