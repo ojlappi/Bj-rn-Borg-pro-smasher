@@ -23,6 +23,7 @@ package level
 			entries.add(new SmallDoor(40, 220, 0, 2));
 			entries.add(new SmallDoor(100, 220, 0, 1));
 			entries.add(new SmallDoor(200, 220, 2, 0));
+			entries.add(new SmallDoor(250, 220, 3, 0));
 		
 			
 			map = new FlxTilemap();

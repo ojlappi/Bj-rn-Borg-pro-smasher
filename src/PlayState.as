@@ -14,7 +14,7 @@ package
 			
 			Registry.playstate = this;
 			Registry.justEntered = false;
-			rooms = [new TestLevel,new DesertLevel, new UFOLevel,new TenniscourtsLevel,new TowerRoom];
+			rooms = [new TestLevel,new DesertLevel,new UFOLevel,new TennisTestLevel,new TenniscourtsLevel,new TowerRoom];
 			Registry.room = rooms[0];
 			
 		
