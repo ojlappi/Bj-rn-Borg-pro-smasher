@@ -1,3 +1,9 @@
+Gimp/
+Tiled/
+.gitignore
+bin/
+obj/
+
 #################
 ## Eclipse
 #################
