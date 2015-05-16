@@ -3,6 +3,7 @@ package
 	import org.flixel.FlxGroup;
 	import org.flixel.plugin.photonstorm.FlxLinkedGroup;
 	import sprite.Player;
+	import sprite.TennisStatue;
 	/**
 	 * ...
 	 * @author Lappi
@@ -21,6 +22,10 @@ package
 		public static var effects:FlxGroup = new FlxGroup;
 		public static var playstate:PlayState;
 		public static var justEntered:Boolean;
+		
+		public static var bouncy:Boolean = false;
+		public static var grounded:FlxGroup = new FlxGroup;
+		
 		public function Registry() 
 		{
 			

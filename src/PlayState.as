@@ -31,6 +31,8 @@ package
 			add(Registry.player);
 			add(Registry.room);
 			
+			add(Registry.grounded);
+			
 			
 			add(new Ufo(0, 0, this));
 			
@@ -65,6 +67,7 @@ package
 			FlxG.collide(Registry.npcs, Registry.room);
 			FlxG.collide(Registry.enemies, Registry.room);
 		
+			FlxG.collide(Registry.grounded, Registry.room) // Håller koll på bollar som ska vara på marken
 			
 			
 			
@@ -123,16 +126,49 @@ package
 			Registry.player.state.tryToSwing();
 			
 			}
-			if (FlxG.keys.justPressed("X")) {
-				var sign:int = (Registry.player.facing==FlxObject.LEFT?-1:1);
+			
+			var sign:int = (Registry.player.facing==FlxObject.LEFT?-1:1);
+			
+			if (Registry.bouncy == true) {
+				
+				if (FlxG.keys.justPressed("X")) {
+				
+			Registry.projectiles.add(new BouncyBall(Registry.player.getMidpoint().x+sign*15,Registry.player.y-10,200*sign,0));
+			
+			}
+				
+				
+			}
+			else {
+				
+				if (FlxG.keys.justPressed("X")) {
+	
 			Registry.projectiles.add(new Ball(Registry.player.getMidpoint().x+sign*15,Registry.player.y,100*sign,0));
 			
 			}
+				
+				
+			}
+			
+			
+			
 			
 		
 		}
-		public function loadRoom(roomIndex:int, entryIndex:int):void{
+		public function loadRoom(roomIndex:int, entryIndex:int):void {
+			
 			var oldRoom:FlxGroup = Registry.room;
+			
+			if (roomIndex == 3) { //Ser till att bollarna studsar när man är på tennisplanen
+				
+				Registry.bouncy = true; 
+				
+			} else {
+				
+				Registry.bouncy = false;
+				
+			}
+			
 			Registry.room = rooms[roomIndex];
 			Registry.backgroundLayer.clear();
 			Registry.collidableEnemies.clear();
@@ -141,7 +177,7 @@ package
 			Registry.npcs.clear();
 			Registry.projectiles.clear();
 			Registry.smokeLayer.clear();
-			
+			Registry.grounded.clear();
 			remove(oldRoom);
 			
 			add(Registry.room);

@@ -7,7 +7,7 @@ package sprite {
 	 * ...
 	 * @author Lappi
 	 */
-	public class Player extends GameSprite 
+	public class Player extends GameSprite
 	{
 		
 private var count:int = 0;
@@ -23,7 +23,7 @@ private var count:int = 0;
 			strength = 200;
 			isPlayer = true;
 			targets = Registry.enemies;
-						
+			
 			loadGraphic(playerPNG, true, true, 30, 21, true);
 			
 			facing = FlxObject.RIGHT;

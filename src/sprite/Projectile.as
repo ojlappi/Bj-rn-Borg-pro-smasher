@@ -21,6 +21,10 @@ package sprite {
 			
 		}
 		
+		public function justHit():void{
+	
+		}
+		
 	}
 
 }

@@ -15,7 +15,8 @@ package sprite
 			
 			super(X, Y);
 			
-			loadGraphic(ballPNG, false, true, 2, 2,false);
+			loadGraphic(ballPNG, false, true, 2, 2, false);
+			
 			elasticity = 0.8;
 			width = 2;
 			height = 2;

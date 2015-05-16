@@ -10,6 +10,7 @@ package sprite
 	 */
 	public class TennisStatue extends FlxSprite
 	{
+		
 		private var swinging:Boolean = false;
 		private var sign:int;
 		private var counter:int = 0;
@@ -30,10 +31,16 @@ package sprite
 	override public function update():void {
 		
 			for each(var pro:Projectile in Registry.projectiles.members ) {
-				if (FlxG.overlap(this,pro)) {
+				if (FlxG.overlap(this, pro)) {
+					
+					
+					
 					swinging = true;
 					play("swing");
 					pro.velocity.x = sign * 150;
+				
+					pro.justHit();
+					
 					break;
 				}
 				
