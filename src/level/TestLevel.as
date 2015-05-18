@@ -1,6 +1,7 @@
 package level 
 {
 		import org.flixel.*;
+		import sprite.Rosedoor;
 		import sprite.SmallDoor;
 
 	/**
@@ -24,7 +25,6 @@ package level
 			entries.add(new SmallDoor(100, 220, 0, 1));
 			entries.add(new SmallDoor(200, 220, 2, 0));
 			entries.add(new SmallDoor(250, 220, 3, 0));
-		
 			
 			map = new FlxTilemap();
 			map.loadMap(new mapCSV, mapPNG, 20, 20, 0, 0, 1, 1);
@@ -33,7 +33,11 @@ package level
 			add(map);
 			
 		}
-		
+		override public function init():void {
+			super.init();
+			Registry.backgroundLayer.add(new Rosedoor(200, 30));
+			
+		}
 	}
 
 }
