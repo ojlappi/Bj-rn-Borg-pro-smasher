@@ -86,6 +86,10 @@ package
 				
 			
 			}
+			if (FlxG.keys.justPressed("G")) {
+				var d:Rosedoor= new Rosedoor(Registry.player.x, 40);
+				Registry.backgroundLayer.add(d);
+			}
 			if (FlxG.keys.ONE){
 				Registry.npcs.add(new Cat(Math.floor(Math.random() * 80)+Registry.player.x,40));
 			}
@@ -110,11 +114,9 @@ package
 			if (FlxG.keys.SEVEN&&FlxG.keys.justPressed("SEVEN")) {
 				Registry.projectiles.add(new Meteorite(Registry.player.x, 1,50,100,false ));
 			}
-				if (FlxG.keys.G&&FlxG.keys.justPressed("G")) {
-				Registry.projectiles.add(new Closet(Registry.player.x, 40));
-			}
+			
 				if (FlxG.keys.EIGHT&&FlxG.keys.justPressed("EIGHT")){
-				loadRoom(4,0);
+				Registry.backgroundLayer.add(new Rosedoor(Registry.player.x, Registry.player.y-100 ));
 			}
 				if (FlxG.keys.Q&&FlxG.keys.justPressed("Q")){
 				loadRoom(0,0);
