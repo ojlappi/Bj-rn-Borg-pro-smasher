@@ -65,8 +65,16 @@ package sprite
 			
 			
 			
-			xs.add(new XSPetal(X, Y+56, xsPNG,this, FlxObject.RIGHT,180));
-			xs.add(new XSPetal(X-12, Y+56, xsPNG,this));
+			xs.add(new XSPetal(X, Y + 56, xsPNG, this, FlxObject.RIGHT, 180));
+			xs.add(new XSPetal(X , Y + 56, xsPNG, this, FlxObject.LEFT));
+			xs.add(new XSPetal(X , Y + 56, xsPNG, this, FlxObject.RIGHT, 180));
+			xs.add(new XSPetal(X , Y + 56, xsPNG, this, FlxObject.LEFT));
+			
+			xs.add(new XSPetal(X - 12, Y + 56, xsPNG, this));
+			xs.add(new XSPetal(X - 12, Y + 56, xsPNG, this, FlxObject.LEFT, 180));
+			xs.add(new XSPetal(X - 12, Y + 56, xsPNG, this));
+			xs.add(new XSPetal(X - 12, Y + 56, xsPNG, this,FlxObject.LEFT,180));
+			
 			
 			
 		}public function openNext(order:int):void {
@@ -74,30 +82,37 @@ package sprite
 				case 0: {
 				meds.members[0].turn(1,1);
 				meds.members[1].turn( -1, -1);	
-				meds.members[2].turn( -1, 1,5);	
-				meds.members[3].turn(1, -1,5);
+				meds.members[2].turn( -1, 1,25);	
+				meds.members[3].turn(1, -1,25);
 				
 				meds.members[4].turn(1,1);
 				meds.members[5].turn( -1, -1);	
-				meds.members[6].turn( -1, 1,5);	
-				meds.members[7].turn(1, -1,5);
+				meds.members[6].turn( -1, 1,25);	
+				meds.members[7].turn(1, -1,25);
 				}
 				break;
 				case 1: {
 				smalls.members[0].turn(1,1);
 				smalls.members[1].turn( -1, -1);	
-				smalls.members[2].turn( -1, 1,5);	
-				smalls.members[3].turn(1, -1,5);
+				smalls.members[2].turn( -1, 1,25);	
+				smalls.members[3].turn(1, -1,25);
 				
 				smalls.members[4].turn(1,1);
 				smalls.members[5].turn( -1, -1);	
-				smalls.members[6].turn( -1, 1,5);	
-				smalls.members[7].turn(1, -1,5);
+				smalls.members[6].turn( -1, 1,25);	
+				smalls.members[7].turn(1, -1,25);
 				}
 				break;
 				case 2: {
-					xs.members[0].turn(1,1);
-					xs.members[1].turn( 1,1); 
+				xs.members[0].turn(1,1);
+				xs.members[1].turn( -1, -1);	
+				xs.members[2].turn( -1, 1,25);	
+				xs.members[3].turn(1, -1,25);
+				
+				xs.members[4].turn(1,1);
+				xs.members[5].turn( -1, -1);	
+				xs.members[6].turn( -1, 1,25);	
+				xs.members[7].turn(1, -1,25);
 				}					
 			}
 		}
@@ -107,13 +122,14 @@ package sprite
 			if (FlxG.keys.DOWN && open == false) {
 				bigs.members[0].turn(1,1);
 				bigs.members[1].turn( -1, -1);	
-				bigs.members[2].turn( -1, 1,5);	
-				bigs.members[3].turn(1, -1,5);
+				bigs.members[2].turn( -1, 1,25);	
+				bigs.members[3].turn(1, -1,25);
 				
 				bigs.members[4].turn(1,1);
 				bigs.members[5].turn( -1, -1);	
-				bigs.members[6].turn( -1, 1,5);	
-				bigs.members[7].turn(1, -1,5);
+				bigs.members[6].turn( -1, 1,25);	
+				bigs.members[7].turn(1, -1, 25);
+				open = true;
 			}	
 		}	
 	}	
@@ -140,8 +156,11 @@ class Petal extends FlxSprite {
 		super(X, Y);
 		this.rd = rd;
 	}
-	public function turn(direction:Number,direction2:Number,angle:Number=0,length:Number=0 ):void {
+	public function turn(direction:Number, direction2:Number, angle:Number = 0, length:Number = 0 ):void {
+		if (turning)
+	return;
 		rotation += angle;
+		//^^this gets added twice or maybe six times
 		angularVelocity = direction*(rotation) / time;
 		openingVelocity = direction2*completeR / (time*100);
 		turning = true;
@@ -155,12 +174,9 @@ class Petal extends FlxSprite {
 		super.update();
 		if (turning) {
 			radius += openingVelocity;
-		
 		}
 		if (turning&&Math.abs(angle-initialAngle) > rotation) {
-			immovable = true;
 			
-		
 			rd.openNext(order);
 			turning = false;
 		}
@@ -230,6 +246,6 @@ class BigPetal extends Petal {
 			loadGraphic(img, false, true, 12, 23);
 			makeCent();
 			completeR = 100;
-			rotation = 75;
+			rotation = 90;
 		}
 	}
